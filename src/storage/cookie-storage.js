@@ -4,14 +4,10 @@ import {
   parseCookies
 } from '../utils.js';
 
-import {
-  getCookieDomainUrl
-} from '../options.js';
-
 class CookieStorage {
   constructor(defaultOptions) {
     this._defaultOptions = objectExtend({
-      domain: getCookieDomainUrl(),
+      domain: window.location.hostname,
       expires: null,
       path: '/',
       secure: false
@@ -40,19 +36,13 @@ class CookieStorage {
   }
 
   _getCookie() {
-    try {
-      return typeof document === 'undefined'
-        ? '' : typeof document.cookie === 'undefined'
-          ? '' : document.cookie;
-    } catch (e) {}
-    
-    return '';
+    return typeof document === 'undefined'
+      ? '' : typeof document.cookie === 'undefined'
+        ? '' : document.cookie;
   }
 
   _setCookie(cookie) {
-    try {
-      document.cookie = cookie;
-    } catch (e) {}
+    document.cookie = cookie;
   }
 }
 

@@ -42,10 +42,13 @@ export default class VueAuthenticate {
     })
 
     // Setup request interceptors
-    if (this.options.bindRequestInterceptor && isFunction(this.options.bindRequestInterceptor)) {
+    if (this.options.bindRequestInterceptor && isFunction(this.options.bindRequestInterceptor) &&
+        this.options.bindResponseInterceptor && isFunction(this.options.bindResponseInterceptor)) {
+
       this.options.bindRequestInterceptor.call(this, this)
+      this.options.bindResponseInterceptor.call(this, this)
     } else {
-      throw new Error('Request interceptor must be functions')
+      throw new Error('Both request and response interceptors must be functions')
     }
   }
 
@@ -172,11 +175,10 @@ export default class VueAuthenticate {
     }
 
     requestOptions = requestOptions || {}
+    requestOptions.url = requestOptions.logoutUrl || this.options.logoutUrl
 
     if (requestOptions.url) {
-      requestOptions.url = requestOptions.url ? requestOptions.url : joinUrl(this.options.baseUrl, this.options.logoutUrl)
       requestOptions.method = requestOptions.method || 'POST'
-      requestOptions[this.options.requestDataKey] = requestOptions[this.options.requestDataKey] || undefined
       requestOptions.withCredentials = requestOptions.withCredentials || this.options.withCredentials
 
       return this.$http(requestOptions).then((response) => {
