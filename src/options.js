@@ -51,6 +51,19 @@ export default {
   },
 
   providers: {
+    zoho: {
+      name: 'zoho',
+      url: '/auth/zoho',
+      authorizationEndpoint: 'https://accounts.zoho.com/oauth/v2/auth',
+      redirectUri: window.location.origin + '/',
+      requiredUrlParams: ['display', 'scope'],
+      scope: ['email'],
+      scopeDelimiter: ',',
+      display: 'popup',
+      oauthType: '2.0',
+      popupOptions: { width: 580, height: 400 }
+    },
+
     facebook: {
       name: 'facebook',
       url: '/auth/facebook',

@@ -13,7 +13,7 @@ Vue.use(VueAuthenticate, {
 var router = new VueRouter({
   mode: 'history',
   routes: [
-    { 
+    {
       path: '/',
       name: 'index',
       component: {
@@ -33,16 +33,17 @@ var router = new VueRouter({
             <button @click="authLogin()">Login</button>
             <button @click="authRegister()">Register</button>
             <button @click="authLogout()">Logout</button>
-            
+
             <hr />
 
+            <button @click="auth('zoho')" class="button--github">Auth zoho</button>
             <button @click="auth('github')" class="button--github">Auth github</button>
             <button @click="auth('facebook')" class="button--facebook">Auth facebook</button>
             <button @click="auth('google')" class="button--google">Auth google</button>
             <button @click="auth('twitter')" class="button--twitter">Auth twitter</button>
 
             <hr />
-            
+
             <button @click="auth('instagram')" class="button--instagram">Auth instagram</button>
             <button @click="auth('bitbucket')" class="button--bitbucket">Auth bitbucket</button>
             <button @click="auth('linkedin')" class="button--linkedin">Auth LinkedIn</button>
@@ -56,12 +57,12 @@ var router = new VueRouter({
           authLogin: function () {
             var this_ = this;
             let user = {
-              email: 'john.doe@domain.com', 
+              email: 'john.doe@domain.com',
               password: 'pass123456'
             };
 
             if (this.$auth.isAuthenticated()) {
-              this.$auth.logout()  
+              this.$auth.logout()
             }
 
             this.$auth.login(user).then(function (response) {
@@ -73,14 +74,14 @@ var router = new VueRouter({
             var this_ = this;
             let user = {
               name: 'John Doe',
-              email: 'john.doe@domain.com', 
+              email: 'john.doe@domain.com',
               password: 'pass123456'
             };
 
             if (this.$auth.isAuthenticated()) {
-              this.$auth.logout()  
+              this.$auth.logout()
             }
-            
+
             this.$auth.register(user).then(function (response) {
               this_.response = response
             })
@@ -135,7 +136,7 @@ var router = new VueRouter({
             })
           }
         }
-      } 
+      }
     },
 
     {
