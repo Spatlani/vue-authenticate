@@ -51,7 +51,7 @@ export default {
   },
 
   providers: {
-    zoho: {
+    zohoSign: {
       name: 'zoho',
       url: '/auth/zoho',
       authorizationEndpoint: 'https://accounts.zoho.com/oauth/v2/auth',

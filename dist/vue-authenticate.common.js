@@ -1,5 +1,5 @@
 /*!
- * vue-authenticate v1.3.5-beta.1
+ * vue-authenticate v1.3.5-beta.3
  * https://github.com/dgrubelic/vue-authenticate
  * Released under the MIT License.
  */
@@ -533,7 +533,7 @@ var defaultOptions = {
   },
 
   providers: {
-    zoho: {
+    zohoSign: {
       name: 'zoho',
       url: '/auth/zoho',
       authorizationEndpoint: 'https://accounts.zoho.com/oauth/v2/auth',
@@ -1255,7 +1255,7 @@ VueAuthenticate.prototype.setToken = function setToken (response) {
   if (response[this.options.responseDataKey]) {
     response = response[this.options.responseDataKey];
   }
-    
+
   var token;
   if (response.access_token) {
     if (isObject(response.access_token) && isObject(response.access_token[this.options.responseDataKey])) {
@@ -1285,7 +1285,7 @@ VueAuthenticate.prototype.getPayload = function getPayload () {
     } catch (e) {}
   }
 };
-  
+
 /**
  * Login user using email and password
  * @param{Object} user         User data
@@ -1358,7 +1358,7 @@ VueAuthenticate.prototype.logout = function logout (requestOptions) {
 
 /**
  * Authenticate user using authentication provider
- * 
+ *
  * @param{String} provider     Provider name
  * @param{Object} userData     User data
  * @param{Object} requestOptions Request options
@@ -1392,7 +1392,7 @@ VueAuthenticate.prototype.authenticate = function authenticate (provider, userDa
       if (this$1.isAuthenticated()) {
         return resolve(response)
       } else {
-        return reject(new Error('Authentication failed'))
+        return reject(response)
       }
     }).catch(function (err) { return reject(err); })
   })
