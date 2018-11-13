@@ -1,5 +1,5 @@
 /*!
- * vue-authenticate v1.3.5-beta.3
+ * vue-authenticate v1.3.5-beta.4
  * https://github.com/dgrubelic/vue-authenticate
  * Released under the MIT License.
  */
@@ -537,6 +537,19 @@ var defaultOptions = {
       name: 'zoho',
       url: '/auth/zoho',
       authorizationEndpoint: 'https://accounts.zoho.com/oauth/v2/auth',
+      redirectUri: window.location.origin + '/',
+      requiredUrlParams: ['display', 'scope'],
+      scope: ['email'],
+      scopeDelimiter: ',',
+      display: 'popup',
+      oauthType: '2.0',
+      popupOptions: { width: 580, height: 400 }
+    },
+
+    slack: {
+      name: 'slack',
+      url: '/auth/slack',
+      authorizationEndpoint: 'https://slack.com/oauth/authorize',
       redirectUri: window.location.origin + '/',
       requiredUrlParams: ['display', 'scope'],
       scope: ['email'],

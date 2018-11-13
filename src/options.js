@@ -64,6 +64,19 @@ export default {
       popupOptions: { width: 580, height: 400 }
     },
 
+    slack: {
+      name: 'slack',
+      url: '/auth/slack',
+      authorizationEndpoint: 'https://slack.com/oauth/authorize',
+      redirectUri: window.location.origin + '/',
+      requiredUrlParams: ['display', 'scope'],
+      scope: ['email'],
+      scopeDelimiter: ',',
+      display: 'popup',
+      oauthType: '2.0',
+      popupOptions: { width: 580, height: 400 }
+    },
+
     facebook: {
       name: 'facebook',
       url: '/auth/facebook',
